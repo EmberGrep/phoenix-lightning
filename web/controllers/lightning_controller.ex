@@ -1,9 +1,13 @@
 defmodule EmbergrepFast.LightningController do
   use EmbergrepFast.Web, :controller
+  import Exredis
 
   def index(conn, _params) do
-    # Return some static JSON for now
+    {:ok, client} = Exredis.start_link
+
+    result = client |> Exredis.query ["GET", "embergrep-site:index:default"]
+
     conn
-    |> json(%{status: "Ok"})
+    |> html(result)
   end
 end
