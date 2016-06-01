@@ -12,8 +12,10 @@ defmodule EmbergrepFast.LightningController do
   def not_found(conn, _) do
     {:ok, client} = Exredis.start_link
 
+    sha = client
+            |> Exredis.query(["GET", "embergrep-site:index:current"])
     result = client
-            |> Exredis.query(["GET", "embergrep-site:index:default"])
+            |> Exredis.query(["GET", "embergrep-site:index:#{sha}"])
 
     html(conn, result)
   end
