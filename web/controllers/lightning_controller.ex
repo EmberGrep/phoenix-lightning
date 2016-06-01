@@ -2,8 +2,7 @@ defmodule EmbergrepFast.LightningController do
   use Plug.Builder
   plug Plug.Static,
     at: "/",
-    from: "./assets",
-    gzip: true
+    from: "./assets"
   plug :not_found
 
   import Exredis
