@@ -9,8 +9,6 @@ defmodule EmbergrepFast do
     children = [
       # Start the endpoint when the application starts
       supervisor(EmbergrepFast.Endpoint, []),
-      # Start the Ecto repository
-      supervisor(EmbergrepFast.Repo, []),
       # Here you could define other workers and supervisors as children
       # worker(EmbergrepFast.Worker, [arg1, arg2, arg3]),
     ]

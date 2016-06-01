@@ -8,12 +8,3 @@ config :embergrep_fast, EmbergrepFast.Endpoint,
 
 # Print only warnings and errors during test
 config :logger, level: :warn
-
-# Configure your database
-config :embergrep_fast, EmbergrepFast.Repo,
-  adapter: Ecto.Adapters.Postgres,
-  username: "postgres",
-  password: "postgres",
-  database: "embergrep_fast_test",
-  hostname: "localhost",
-  pool: Ecto.Adapters.SQL.Sandbox

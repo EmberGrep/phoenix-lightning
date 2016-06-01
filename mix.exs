@@ -18,8 +18,7 @@ defmodule EmbergrepFast.Mixfile do
   # Type `mix help compile.app` for more information.
   def application do
     [mod: {EmbergrepFast, []},
-     applications: [:phoenix, :cowboy, :logger, :gettext,
-                    :phoenix_ecto, :postgrex]]
+     applications: [:phoenix, :cowboy, :logger, :gettext]]
   end
 
   # Specifies which paths to compile per environment.
@@ -32,7 +31,6 @@ defmodule EmbergrepFast.Mixfile do
   defp deps do
     [{:phoenix, "~> 1.1.4"},
      {:postgrex, ">= 0.0.0"},
-     {:phoenix_ecto, "~> 2.0"},
      {:gettext, "~> 0.9"},
      {:cowboy, "~> 1.0"},
      {:exredis, ">= 0.2.2"}]
@@ -45,7 +43,6 @@ defmodule EmbergrepFast.Mixfile do
   #
   # See the documentation for `Mix` for more info on aliases.
   defp aliases do
-    ["ecto.setup": ["ecto.create", "ecto.migrate", "run priv/repo/seeds.exs"],
-     "ecto.reset": ["ecto.drop", "ecto.setup"]]
+    []
   end
 end
