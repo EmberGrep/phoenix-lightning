@@ -1,14 +1,21 @@
 defmodule EmbergrepFast.LightningController do
-  use EmbergrepFast.Web, :controller
-  import Exredis
+  use Plug.Builder
+  plug Plug.Static,
+    at: "/",
+    from: "./assets",
+    gzip: true
+  plug :not_found
 
-  def index(conn, _params) do
+  import Exredis
+  import Phoenix.Controller
+
+
+  def not_found(conn, _) do
     {:ok, client} = Exredis.start_link
 
     result = client
             |> Exredis.query(["GET", "embergrep-site:index:default"])
 
-    conn
-    |> html(result)
+    html(conn, result)
   end
 end
