@@ -1,11 +1,7 @@
 defmodule EmbergrepFast.Router do
   use EmbergrepFast.Web, :router
 
-  pipeline :api do
-    plug :accepts, ["json"]
-  end
-
-  scope "/api", EmbergrepFast do
-    pipe_through :api
+  scope "/", EmbergrepFast do
+    get "/*catch_all", LightningController, :index
   end
 end
