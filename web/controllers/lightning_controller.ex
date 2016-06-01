@@ -5,7 +5,8 @@ defmodule EmbergrepFast.LightningController do
   def index(conn, _params) do
     {:ok, client} = Exredis.start_link
 
-    result = client |> Exredis.query ["GET", "embergrep-site:index:default"]
+    result = client
+            |> Exredis.query(["GET", "embergrep-site:index:default"])
 
     conn
     |> html(result)
